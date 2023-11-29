@@ -113,8 +113,8 @@ app.MapPost("/token",
 //            ? Results.Ok(todo)
 //            : Results.NotFound());
 
-app.MapGet("/api/customer/status/{status}",  async (MetaContext db, int status) => await db.CombinedTables.Where(a => a.Status == (status == 0 ? false : true)).ToListAsync());
-app.MapGet("/api/marketing/{id}", [Authorize] async (int id, MetaContext db) => await db.CombinedTables.Where(a => a.DataId == id).ToListAsync());
+app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.CombinedTables.Where(a => a.Status == (status == 0 ? false : true)).ToListAsync());
+app.MapGet("/api/customer/{id}", [Authorize] async (int id, MetaContext db) => await db.CombinedTables.Where(a => a.DataId == id).ToListAsync());
 //app.MapPost("/api/marketing/setStatus", [Authorize] async (MetaContext db, HttpContext context, List<double> idList) =>
 //{
 //    if (context.Request.HasJsonContentType())
