@@ -115,15 +115,28 @@ app.MapPost("/token",
 //            : Results.NotFound());
 
 app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.CombinedTables.Where(a => a.Status == (status == 0 ? false : true)).ToListAsync());
-app.MapGet("/api/customer/{id}", [Authorize] async ( MetaContext db, double id) => await db.CombinedTables.Where(a => a.DataId == id).ToListAsync());
-app.MapPost("/api/marketing/setStatus", [Authorize] async (MetaContext db, HttpContext context, [FromBody]List<double> idList) =>
+app.MapGet("/api/customer/{id}", [Authorize] async (MetaContext db, double id) => await db.CombinedTables.Where(a => a.DataId == id).ToListAsync());
+app.MapPost("/api/marketing/setDisable", [Authorize] async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
 {
-    var list = await db.CombinedTables.Where(a => idList.Exists(b => a.DataId == b)).ToListAsync();
+    idList = idList ?? new List<double>();
+    var list = await db.CombinedTables.Where(a => idList.Contains(a.DataId)).ToListAsync();
+
     list.ForEach((item) =>
-        {
-            item.Status = !item.Status;
-        });
-    //db.Entry(list).State = EntityState.Modified;
+    {
+        item.Status = false;
+    });
+    await db.SaveChangesAsync();
+});
+
+app.MapPost("/api/marketing/changeStatus", [Authorize] async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
+{
+    idList = idList ?? new List<double>();
+    var list = await db.CombinedTables.Where(a => idList.Contains(a.DataId)).ToListAsync();
+
+    list.ForEach((item) =>
+    {
+        item.Status = !item.Status;
+    });
     await db.SaveChangesAsync();
 });
 
