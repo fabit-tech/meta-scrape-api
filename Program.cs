@@ -118,10 +118,12 @@ app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, i
 app.MapGet("/api/customer/{id}", [Authorize] async ( MetaContext db, double id) => await db.CombinedTables.Where(a => a.DataId == id).ToListAsync());
 app.MapPost("/api/marketing/setStatus", [Authorize] async (MetaContext db, HttpContext context, [FromBody]List<double> idList) =>
 {
-    await db.CombinedTables.Where(a => idList.Exists(b => a.DataId == b)).ForEachAsync((item) =>
+    var list = await db.CombinedTables.Where(a => idList.Exists(b => a.DataId == b)).ToListAsync();
+    list.ForEach((item) =>
         {
             item.Status = !item.Status;
         });
+    //db.Entry(list).State = EntityState.Modified;
     await db.SaveChangesAsync();
 });
 
