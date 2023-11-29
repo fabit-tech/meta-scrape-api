@@ -6,12 +6,12 @@ namespace MetaApi.Models;
 
 public partial class MetaContext : DbContext
 {
-    protected readonly IConfiguration Configuration;
-    public MetaContext(IConfiguration configuration)
-    {
-        Configuration = configuration;
-    }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
+    //protected readonly IConfiguration Configuration;
+    //public MetaContext(IConfiguration configuration)
+    //{
+    //    Configuration = configuration;
+    //}
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
 
     public MetaContext(DbContextOptions<MetaContext> options)
         : base(options)
