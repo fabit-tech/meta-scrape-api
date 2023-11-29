@@ -98,16 +98,14 @@ app.MapPost("/token",
 
 app.MapGet("/api/marketing/status/{status}", [Authorize] async (int status, MetaContext db) => await db.CombinedTables.Where(a => a.Status == (status == 0 ? false : true)).ToListAsync());
 app.MapGet("/api/marketing/{id}", [Authorize] async (int id, MetaContext db) => await db.CombinedTables.Where(a => a.DataId == id).ToListAsync());
-app.MapPost("/api/marketing/setStatus", [Authorize] async ([Microsoft.AspNetCore.Mvc.FromBody] List<double> idList, MetaContext db) =>
-{
-    await db.CombinedTables.Where(a => idList.Exists(b => a.DataId == b)).ForEachAsync((item) =>
-        {
-            item.Status = !item.Status;
-        });
-    await db.SaveChangesAsync();
-}
-
-    );
+//app.MapPost("/api/marketing/setStatus", [Authorize] async ([Microsoft.AspNetCore.Mvc.FromBody] List<double> idList, MetaContext db) =>
+//{
+//    await db.CombinedTables.Where(a => idList.Exists(b => a.DataId == b)).ForEachAsync((item) =>
+//        {
+//            item.Status = !item.Status;
+//        });
+//    await db.SaveChangesAsync();
+//});
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
