@@ -114,7 +114,7 @@ app.MapPost("/token",
 //            ? Results.Ok(todo)
 //            : Results.NotFound());
 
-app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.CombinedTables.Where(a => a.Status == (status == 0 ? false : true)).ToListAsync());
+app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.CombinedTables.Where(a => a.DataId > 0 && a.Status == (status == 0 ? false : true)).ToListAsync());
 app.MapGet("/api/customer/{id}", [Authorize] async (MetaContext db, double id) => await db.CombinedTables.Where(a => a.DataId == id).ToListAsync());
 app.MapPost("/api/marketing/set-disable", [Authorize] async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
 {
