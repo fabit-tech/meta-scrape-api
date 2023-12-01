@@ -27,7 +27,6 @@ public partial class MetaContext : DbContext
             entity.Property(e => e.EmailId).HasColumnName("email_id");
             entity.Property(e => e.FormId).HasColumnName("form_id");
             entity.Property(e => e.FormName).HasColumnName("form_name");
-            entity.Property(e => e.FullNames).HasColumnName("full_names");
             entity.Property(e => e.Fullname).HasColumnName("fullname");
             entity.Property(e => e.IletisimKurulacakKanal).HasColumnName("iletisim_kurulacak_kanal");
             entity.Property(e => e.IsDomestic).HasColumnName("is_domestic");
