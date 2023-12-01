@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MetaApi.Models;
 
 public partial class CombinedTable
 {
-    public double DataId { get; set; }
+    public double? DataId { get; set; }
 
     public string? CreatedTime { get; set; }
 
@@ -53,4 +54,6 @@ public partial class CombinedTable
 
     public double? EmailId { get; set; }
     public bool Status { get; set; }
+    [Key]
+    public int PrimaryKey { get; set; }
 }

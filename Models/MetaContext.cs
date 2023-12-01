@@ -6,13 +6,6 @@ namespace MetaApi.Models;
 
 public partial class MetaContext : DbContext
 {
-    //protected readonly IConfiguration Configuration;
-    //public MetaContext(IConfiguration configuration)
-    //{
-    //    Configuration = configuration;
-    //}
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
-
     public MetaContext(DbContextOptions<MetaContext> options)
         : base(options)
     {
@@ -25,9 +18,7 @@ public partial class MetaContext : DbContext
     {
         modelBuilder.Entity<CombinedTable>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("combined_table");
+            entity.ToTable("combined_table");
 
             entity.Property(e => e.CreatedTime).HasColumnName("created_time");
             entity.Property(e => e.DataId).HasColumnName("data_id");
@@ -54,6 +45,7 @@ public partial class MetaContext : DbContext
             entity.Property(e => e.YatirimButcesiDövizTipi).HasColumnName("yatirim_butcesi_döviz_tipi");
             entity.Property(e => e.YatirimButcesiMiktari).HasColumnName("yatirim_butcesi_miktari");
             entity.Property(e => e.Status).HasColumnName("status");
+            entity.Property(e => e.PrimaryKey).HasColumnName("primary_key");
         });
 
         OnModelCreatingPartial(modelBuilder);
