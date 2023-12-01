@@ -40,8 +40,6 @@ public partial class CombinedTable
 
     public string? Projects { get; set; }
 
-    public string? FullNames { get; set; }
-
     public string? Mesaj { get; set; }
 
     public string? ReferansUrl { get; set; }
