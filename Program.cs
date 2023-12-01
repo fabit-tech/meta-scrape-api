@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 
@@ -97,29 +95,12 @@ app.MapPost("/token",
     }
 });
 
-
-//app.MapGet("/api/customer/{id}", (int id) =>
-//{
-//    using(var db = new MetaContext(builder.Configuration))
-//    {
-//        var tab = db.CombinedTables.FirstOrDefault(a=> a.DataId == id) is CombinedTable table ? Results.Ok(table):Results.NotFound();
-//    }
-//}
-
-//);
-
-//app.MapGet("/api/customer/{id}", async (int id, MetaContext db) =>
-//    await db.CombinedTables.FindAsync(id)
-//        is CombinedTable todo
-//            ? Results.Ok(todo)
-//            : Results.NotFound());
-
-app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.CombinedTables.Where(a => a.DataId > 0 && a.Status == (status == 0 ? false : true)).ToListAsync());
-app.MapGet("/api/customer/{id}", [Authorize] async (MetaContext db, double id) => await db.CombinedTables.Where(a => a.DataId == id).ToListAsync());
+app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.CombinedTables.Where(a => a.Status == (status == 0 ? false : true)).ToListAsync());
+app.MapGet("/api/customer/{id}", [Authorize] async (MetaContext db, double id) => await db.CombinedTables.Where(a => a.PrimaryKey == id).ToListAsync());
 app.MapPost("/api/marketing/set-disable", [Authorize] async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
 {
     idList = idList ?? new List<double>();
-    var list = await db.CombinedTables.Where(a => idList.Contains(a.DataId)).ToListAsync();
+    var list = await db.CombinedTables.Where(a => idList.Contains(a.PrimaryKey)).ToListAsync();
 
     list.ForEach((item) =>
     {
@@ -131,7 +112,7 @@ app.MapPost("/api/marketing/set-disable", [Authorize] async (MetaContext db, Htt
 app.MapPost("/api/marketing/change-status", [Authorize] async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
 {
     idList = idList ?? new List<double>();
-    var list = await db.CombinedTables.Where(a => idList.Contains(a.DataId)).ToListAsync();
+    var list = await db.CombinedTables.Where(a => idList.Contains(a.PrimaryKey)).ToListAsync();
 
     list.ForEach((item) =>
     {
