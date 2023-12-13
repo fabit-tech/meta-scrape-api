@@ -53,6 +53,8 @@ public partial class CombinedTable
     public double? EmailId { get; set; }
     public bool Status { get; set; }
     public string? EvBakmaAmaci { get; set; }
+    public string? KategoriAdi { get; set; }
+    public string? KategoriId { get; set; }
     [Key]
     public int PrimaryKey { get; set; }
 }
