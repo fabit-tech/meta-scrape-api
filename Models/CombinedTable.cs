@@ -1,19 +1,11 @@
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection.Metadata.Ecma335;
 
 namespace MetaApi.Models;
 
 public partial class CombinedTable
 {
-    //public CombinedTable()
-    //{
-    //    int res;
-    //    int.TryParse(KategoriIdStr, out res);
-    //    KategoriId = res;
-    //}
     public double? DataId { get; set; }
 
     public string? CreatedTime { get; set; }
@@ -62,8 +54,7 @@ public partial class CombinedTable
     public bool Status { get; set; }
     public string? EvBakmaAmaci { get; set; }
     public string? KategoriAdi { get; set; }
-    public int? KategoriId { get; set; }
-    //public string? KategoriIdStr { get; set; }
+    public string? KategoriId { get; set; }
     [Key]
     public int PrimaryKey { get; set; }
 }
