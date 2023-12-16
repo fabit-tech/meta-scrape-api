@@ -8,12 +8,12 @@ namespace MetaApi.Models;
 
 public partial class CombinedTable
 {
-    public CombinedTable()
-    {
-        int res;
-        int.TryParse(KategoriIdStr, out res);
-        KategoriId = res;
-    }
+    //public CombinedTable()
+    //{
+    //    int res;
+    //    int.TryParse(KategoriIdStr, out res);
+    //    KategoriId = res;
+    //}
     public double? DataId { get; set; }
 
     public string? CreatedTime { get; set; }
