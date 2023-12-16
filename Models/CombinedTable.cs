@@ -63,7 +63,7 @@ public partial class CombinedTable
     public string? EvBakmaAmaci { get; set; }
     public string? KategoriAdi { get; set; }
     public int? KategoriId { get; set; }
-    public string? KategoriIdStr { get; set; }
+    //public string? KategoriIdStr { get; set; }
     [Key]
     public int PrimaryKey { get; set; }
 }
