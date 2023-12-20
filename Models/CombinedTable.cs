@@ -6,7 +6,7 @@ namespace MetaApi.Models;
 
 public partial class CombinedTable
 {
-    public double? DataId { get; set; }
+    public string? DataId { get; set; }
 
     public string? CreatedTime { get; set; }
 
