@@ -55,6 +55,7 @@ public partial class CombinedTable
     public string? EvBakmaAmaci { get; set; }
     public string? KategoriAdi { get; set; }
     public string? KategoriId { get; set; }
+    public DateTime? RecordDate { get; set; }
     [Key]
     public int PrimaryKey { get; set; }
 }
