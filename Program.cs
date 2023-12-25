@@ -98,18 +98,18 @@ app.MapPost("/token",
 app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.CombinedTables.Where(a =>  a.IsSpam == 0 && a.Status == (status == 0 ? false : true)).ToListAsync());
 app.MapGet("/api/customer/{id}", [Authorize] async (MetaContext db, double id) => await db.CombinedTables.Where(a => a.PrimaryKey == id && a.IsSpam == 0).ToListAsync());
 
-app.MapPost("/api/marketing/set-disable", [Authorize] async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
+app.MapPost("/api/marketing/set-disable", async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
 {
     idList = idList ?? new List<double>();
     var list = await db.CombinedTables.Where(a => idList.Contains(a.PrimaryKey)).ToListAsync();
 
     list.ForEach((item) =>
     {
-        item.Status = false;
+        item.Status = true;
     });
     await db.SaveChangesAsync();
 });
-app.MapPost("/api/marketing/change-status", [Authorize] async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
+app.MapPost("/api/marketing/change-status", async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
 {
     idList = idList ?? new List<double>();
     var list = await db.CombinedTables.Where(a => idList.Contains(a.PrimaryKey)).ToListAsync();
