@@ -49,6 +49,7 @@ public partial class MetaContext : DbContext
             entity.Property(e => e.KategoriAdi).HasColumnName("kategori_adi");
             entity.Property(e => e.KategoriId).HasColumnName("kategori_id");
             entity.Property(e => e.RecordDate).HasColumnName("record_date");
+            entity.Property(e => e.OriginalFullname).HasColumnName("original_fullname");
         });
 
         OnModelCreatingPartial(modelBuilder);
