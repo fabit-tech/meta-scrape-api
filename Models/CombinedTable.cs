@@ -34,7 +34,7 @@ public partial class CombinedTable
 
     public string? Dil { get; set; }
 
-    public double? YatirimButcesiMiktari { get; set; }
+    public string? YatirimButcesiMiktari { get; set; }
 
     public string? YatirimButcesiDövizTipi { get; set; }
 
