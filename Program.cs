@@ -94,7 +94,7 @@ app.MapPost("/token",
         return Results.Unauthorized();
     }
 });
-
+//combined endpoint
 app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.CombinedTables.Where(a =>  a.IsSpam == 0 && a.Status == (status == 0 ? false : true)).ToListAsync());
 app.MapGet("/api/customer/{id}", [Authorize] async (MetaContext db, double id) => await db.CombinedTables.Where(a => a.PrimaryKey == id && a.IsSpam == 0).ToListAsync());
 
@@ -117,6 +117,21 @@ app.MapPost("/api/marketing/change-status", async (MetaContext db, HttpContext c
     list.ForEach((item) =>
     {
         item.Status = !item.Status;
+    });
+    await db.SaveChangesAsync();
+});
+
+//createaddsetid enpoint
+app.MapGet("/api/category/addset/{status}", [Authorize] async (MetaContext db, int status) => await db.CreateAddSetId.Where(a => a.Status == (status == 0 ? false : true)).ToListAsync());
+
+app.MapPost("/api/category/set-disable", async (MetaContext db, HttpContext context, [FromBody] List<double> idList1) =>
+{
+    idList1 = idList1 ?? new List<double>();
+    var list = await db.CreateAddSetId.Where(a => idList1.Contains(a.PrimaryId)).ToListAsync();
+
+    list.ForEach((item) =>
+    {
+        item.Status = true;
     });
     await db.SaveChangesAsync();
 });

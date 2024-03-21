@@ -12,10 +12,12 @@ public partial class MetaContext : DbContext
     }
 
     public virtual DbSet<CombinedTable> CombinedTables { get; set; }
+    public virtual DbSet<CreateAddSetId> CreateAddSetId { get; set; }
 
-   
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //combined table
         modelBuilder.Entity<CombinedTable>(entity =>
         {
             entity.ToTable("combined_table");
@@ -51,6 +53,18 @@ public partial class MetaContext : DbContext
             entity.Property(e => e.RecordDate).HasColumnName("record_date");
             entity.Property(e => e.OriginalFullname).HasColumnName("original_fullname");
         });
+        //createAddId table
+        modelBuilder.Entity<CreateAddSetId>(entity =>
+        {
+            entity.ToTable("create_adset_id");
+
+            entity.Property(e => e.PrimaryId).HasColumnName("primary_id");
+            entity.Property(e => e.CategoryName).HasColumnName("kategori_adi");
+            entity.Property(e => e.CreatedTime).HasColumnName("created_time");
+            entity.Property(e => e.Status).HasColumnName("status");
+          
+        });
+
 
         OnModelCreatingPartial(modelBuilder);
     }
