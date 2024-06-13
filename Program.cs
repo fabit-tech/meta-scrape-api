@@ -97,7 +97,7 @@ app.MapPost("/token",
 //combined endpoint
 app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.CombinedTables.Where(a =>  a.IsSpam == 0 && a.Status == (status == 0 ? false : true)).ToListAsync());
 app.MapGet("/api/customer/{id}", [Authorize] async (MetaContext db, double id) => await db.CombinedTables.Where(a => a.PrimaryKey == id && a.IsSpam == 0).ToListAsync());
-app.MapGet("/api/customer/email/{status}", [Authorize] async (MetaContext db, int status) => await db.MailCrmFinal.Where(a => a.IsSpam == 0 && a.Platform.Equals("e-mail") && a.Status == (status == 0 ? false : true)).ToListAsync());
+app.MapGet("/api/customer/{platform}/{status}", [Authorize] async (MetaContext db, string platform, int status) => await db.MailCrmFinal.Where(a => a.IsSpam == 0 && a.Platform=="e-mail" && a.Status == (status == 0 ? false : true)).ToListAsync());
 
 app.MapPost("/api/marketing/set-disable", async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
 {
@@ -136,7 +136,7 @@ app.MapPost("/api/category/set-disable", async (MetaContext db, HttpContext cont
     });
     await db.SaveChangesAsync();
 });
-   app.UseDeveloperExceptionPage();
+
 app.UseHttpsRedirection();
 app.UseAuthorization();
 

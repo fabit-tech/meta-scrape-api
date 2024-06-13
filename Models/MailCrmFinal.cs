@@ -44,7 +44,4 @@ public partial class MailCrmFinal
 
     public bool Status { get; set; }
 
-    public DateTime? RecordDate { get; set; }
-    [Key]
-    public int PrimaryKey { get; set; }
 }

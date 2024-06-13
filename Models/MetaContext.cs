@@ -88,8 +88,6 @@ public partial class MetaContext : DbContext
             entity.Property(e => e.UtmMedium).HasColumnName("utm_medium");
             entity.Property(e => e.UtmCampaign).HasColumnName("utm_campaign");
             entity.Property(e => e.VmSource).HasColumnName("vm_source");
-            entity.Property(e => e.RecordDate).HasColumnName("RecordDate");
-            entity.Property(e => e.PrimaryKey).HasColumnName("PrimaryKey");
             entity.Property(e => e.Status).HasColumnName("status");
 
         });
