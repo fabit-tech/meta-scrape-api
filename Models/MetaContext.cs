@@ -13,6 +13,7 @@ public partial class MetaContext : DbContext
 
     public virtual DbSet<CombinedTable> CombinedTables { get; set; }
     public virtual DbSet<CreateAddSetId> CreateAddSetId { get; set; }
+    public virtual DbSet<MailCrmFinal> MailCrmFinal { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -65,7 +66,33 @@ public partial class MetaContext : DbContext
           
         });
 
+        modelBuilder.Entity<MailCrmFinal>(entity =>
+        {
+            entity.ToTable("mail_crm_final");
 
+            entity.Property(e => e.Gonderen).HasColumnName("gonderen");
+            entity.Property(e => e.Email).HasColumnName("email");
+            entity.Property(e => e.Telefon).HasColumnName("telefon");
+            entity.Property(e => e.Mesaj).HasColumnName("mesaj");
+            entity.Property(e => e.ReferansUrl).HasColumnName("referans_url");
+            entity.Property(e => e.Kvkk).HasColumnName("kvkk");
+            entity.Property(e => e.Platform).HasColumnName("platform");
+            entity.Property(e => e.Dil).HasColumnName("dil");
+            entity.Property(e => e.Ulke).HasColumnName("ulke");
+            entity.Property(e => e.CreateDate).HasColumnName("create_date");
+            entity.Property(e => e.IsSpam).HasColumnName("is_spam");
+            entity.Property(e => e.IsDomestic).HasColumnName("is_domestic");
+            entity.Property(e => e.Projects).HasColumnName("projects");
+            entity.Property(e => e.EmailId).HasColumnName("email_id");
+            entity.Property(e => e.UtmSource).HasColumnName("utm_source");
+            entity.Property(e => e.UtmMedium).HasColumnName("utm_medium");
+            entity.Property(e => e.UtmCampaign).HasColumnName("utm_campaign");
+            entity.Property(e => e.VmSource).HasColumnName("vm_source");
+            entity.Property(e => e.RecordDate).HasColumnName("RecordDate");
+            entity.Property(e => e.PrimaryKey).HasColumnName("PrimaryKey");
+            entity.Property(e => e.Status).HasColumnName("status");
+
+        });
         OnModelCreatingPartial(modelBuilder);
     }
 
