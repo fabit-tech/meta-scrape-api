@@ -32,7 +32,7 @@ public partial class MailCrmFinal
 
     public string? Projects { get; set; }
     [Key]
-    public double? EmailId { get; set; }
+    public double EmailId { get; set; }
 
     public string? UtmSource { get; set; }
 
