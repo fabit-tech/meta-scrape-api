@@ -31,7 +31,7 @@ public partial class MailCrmFinal
     public bool? IsDomestic { get; set; }
 
     public string? Projects { get; set; }
-
+    [Key]
     public double? EmailId { get; set; }
 
     public string? UtmSource { get; set; }
