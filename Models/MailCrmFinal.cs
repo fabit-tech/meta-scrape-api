@@ -28,7 +28,7 @@ public partial class MailCrmFinal
 
     public double? IsSpam { get; set; }
 
-    public bool? IsDomestic { get; set; }
+    public double? IsDomestic { get; set; }
 
     public string? Projects { get; set; }
     [Key]
