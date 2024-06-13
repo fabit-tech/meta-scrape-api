@@ -136,7 +136,7 @@ app.MapPost("/api/category/set-disable", async (MetaContext db, HttpContext cont
     });
     await db.SaveChangesAsync();
 });
-
+   app.UseDeveloperExceptionPage();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
