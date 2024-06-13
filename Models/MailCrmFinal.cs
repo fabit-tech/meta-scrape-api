@@ -24,7 +24,7 @@ public partial class MailCrmFinal
 
     public string? Ulke { get; set; }
 
-    public string? CreateDate { get; set; }
+    public DateTime? CreateDate { get; set; }
 
     public double? IsSpam { get; set; }
 
