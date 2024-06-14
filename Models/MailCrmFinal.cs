@@ -31,8 +31,8 @@ public double? IsSpam { get; set; }
 public double? IsDomestic { get; set; }
 
 public string? Projects { get; set; }
-
-public int? EmailId { get; set; }
+[Key]
+public int EmailId { get; set; }
 
 public string? UtmSource { get; set; }
 
