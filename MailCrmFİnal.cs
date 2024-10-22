@@ -98,7 +98,6 @@ app.MapPost("/token",
 app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.CombinedTables.Where(a =>  a.IsSpam == 0 && a.Status == (status == 0 ? false : true)).ToListAsync());
 app.MapGet("/api/customer/{id}", [Authorize] async (MetaContext db, double id) => await db.CombinedTables.Where(a => a.PrimaryKey == id && a.IsSpam == 0).ToListAsync());
 app.MapGet("/api/customer/{platform}/{status}", [Authorize] async (MetaContext db, string platform, int status) => await db.MailCrmFinal.Where(a => a.IsSpam == 0 && a.Platform=="e-mail" && a.Status == (status == 0 ? false : true)).ToListAsync());
-app.MapGet("/api/customer/{status}", [Authorize] async (MetaContext db, int isIntegrated) => await db.Whatsapp.Where(a => a.IsIntegrated == (isIntegrated == 0 ? false : true)).ToListAsync());
 
 app.MapGet("/api/customer/status/{status}", [Authorize] async (MetaContext db, int status) => await db.Ihale.Where(a => a.Status == (status == 0 ? false : true)).ToListAsync());
 app.MapGet("/api/customer/ihaleId/{ihaleId}", [Authorize] async (MetaContext db, int ihaleId) => await db.IhaleBirimFiyat.Where(a => a.IhaleId == ihaleId).ToListAsync());

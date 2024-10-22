@@ -17,7 +17,6 @@ public partial class MetaContext : DbContext
     public virtual DbSet<Ihale> Ihale { get; set; }
     public virtual DbSet<IhaleBirimFiyat> IhaleBirimFiyat { get; set; }
 
-    public virtual DbSet<Whatsapp> Whatsapp { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -96,21 +95,7 @@ public partial class MetaContext : DbContext
 
         });
 
-        modelBuilder.Entity<Whatsapp>(entity =>
-        {
-            entity.ToTable("whatsapp_crm");
-
-            entity.Property(e => e.Name).HasColumnName("name");
-            entity.Property(e => e.Phone).HasColumnName("phone");
-            entity.Property(e => e.CustomerId).HasColumnName("customer_id");
-            entity.Property(e => e.Platform).HasColumnName("platform");
-            entity.Property(e => e.Message).HasColumnName("message");
-            entity.Property(e => e.IsIntegrated).HasColumnName("is_integrated");
-            entity.Property(e => e.PrimaryKey).HasColumnName("primary_key");
-            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
-
-        });
-
+      
         modelBuilder.Entity<Ihale>(entity =>
         {
             entity.ToTable("ihale");
