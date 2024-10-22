@@ -96,21 +96,21 @@ public partial class MetaContext : DbContext
         });
 
 
-        //modelBuilder.Entity<Ihale>(entity =>
-        //{
-        //    entity.ToTable("ihale");
+        modelBuilder.Entity<Ihale>(entity =>
+        {
+            entity.ToTable("ihale");
 
-        //    entity.Property(e => e.Id).HasColumnName("id");
-        //    entity.Property(e => e.RecordDate).HasColumnName("record_date");
-        //    entity.Property(e => e.ExcelPath).HasColumnName("ecxel_path");
-        //    entity.Property(e => e.CariId).HasColumnName("cari_id");
-        //    entity.Property(e => e.IhaleId).HasColumnName("ihale_id");
-        //    entity.Property(e => e.UniqueIndexId).HasColumnName("unique_index_id");
-        //    entity.Property(e => e.GenelGiderKarYuzdesi).HasColumnName("genel_gider_kar_yuzdesi");
-        //    entity.Property(e => e.Status).HasColumnName("status");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.RecordDate).HasColumnName("record_date");
+            entity.Property(e => e.ExcelPath).HasColumnName("ecxel_path");
+            entity.Property(e => e.CariId).HasColumnName("cari_id");
+            entity.Property(e => e.IhaleId).HasColumnName("ihale_id");
+            entity.Property(e => e.UniqueIndexId).HasColumnName("unique_index_id");
+            entity.Property(e => e.GenelGiderKarYuzdesi).HasColumnName("genel_gider_kar_yuzdesi");
+            entity.Property(e => e.Status).HasColumnName("status");
 
 
-        //});
+        });
 
         modelBuilder.Entity<IhaleBirimFiyat>(entity =>
         {
