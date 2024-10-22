@@ -14,6 +14,10 @@ public partial class MetaContext : DbContext
     public virtual DbSet<CombinedTable> CombinedTables { get; set; }
     public virtual DbSet<CreateAddSetId> CreateAddSetId { get; set; }
     public virtual DbSet<MailCrmFinal> MailCrmFinal { get; set; }
+    public virtual DbSet<Ihale> Ihale { get; set; }
+    public virtual DbSet<IhaleBirimFiyat> IhaleBirimFiyat { get; set; }
+
+    public virtual DbSet<Whatsapp> Whatsapp { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -90,6 +94,47 @@ public partial class MetaContext : DbContext
             entity.Property(e => e.VmSource).HasColumnName("vm_source");
             entity.Property(e => e.Status).HasColumnName("status");
 
+        });
+
+        modelBuilder.Entity<Whatsapp>(entity =>
+        {
+            entity.ToTable("whatsapp_crm");
+
+            entity.Property(e => e.Name).HasColumnName("name");
+            entity.Property(e => e.Phone).HasColumnName("phone");
+            entity.Property(e => e.CustomerId).HasColumnName("customer_id");
+            entity.Property(e => e.Platform).HasColumnName("platform");
+            entity.Property(e => e.Message).HasColumnName("message");
+            entity.Property(e => e.IsIntegrated).HasColumnName("is_integrated");
+            entity.Property(e => e.PrimaryKey).HasColumnName("primary_key");
+            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+
+        });
+
+        modelBuilder.Entity<Ihale>(entity =>
+        {
+            entity.ToTable("ihale");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.RecordDate).HasColumnName("record_date");
+            entity.Property(e => e.ExcelPath).HasColumnName("ecxel_path");
+            entity.Property(e => e.CariId).HasColumnName("cari_id");
+            entity.Property(e => e.IhaleId).HasColumnName("ihale_id");
+            entity.Property(e => e.UniqueIndexId).HasColumnName("unique_index_id");
+            entity.Property(e => e.GenelGiderKarYuzdesi).HasColumnName("genel_gider_kar_yuzdesi");
+            entity.Property(e => e.Status).HasColumnName("status");
+          
+
+        });
+
+        modelBuilder.Entity<IhaleBirimFiyat>(entity =>
+        {
+            entity.ToTable("ihale_birim_fiyat");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.MalzemeBirimFiyat).HasColumnName("malzeme_birim_fiyat");
+            entity.Property(e => e.IhaleId).HasColumnName("ihale_id");
+           
         });
         OnModelCreatingPartial(modelBuilder);
     }
