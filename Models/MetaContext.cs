@@ -14,8 +14,8 @@ public partial class MetaContext : DbContext
     public virtual DbSet<CombinedTable> CombinedTables { get; set; }
     public virtual DbSet<CreateAddSetId> CreateAddSetId { get; set; }
     public virtual DbSet<MailCrmFinal> MailCrmFinal { get; set; }
-    public virtual DbSet<Ihale> Ihale { get; set; }
-    public virtual DbSet<IhaleBirimFiyat> IhaleBirimFiyat { get; set; }
+    //public virtual DbSet<Ihale> Ihale { get; set; }
+    //public virtual DbSet<IhaleBirimFiyat> IhaleBirimFiyat { get; set; }
 
 
 
