@@ -102,7 +102,7 @@ public partial class MetaContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.RecordDate).HasColumnName("record_date");
-            entity.Property(e => e.ExcelPath).HasColumnName("ecxel_path");
+            entity.Property(e => e.ExcelPath).HasColumnName("excel_path");
             entity.Property(e => e.CariId).HasColumnName("cari_id");
             entity.Property(e => e.IhaleId).HasColumnName("ihale_id");
             entity.Property(e => e.UniqueIndexId).HasColumnName("unique_index_id");
