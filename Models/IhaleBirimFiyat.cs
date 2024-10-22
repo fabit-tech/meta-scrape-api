@@ -6,7 +6,7 @@ namespace MetaApi.Models
     {
         [Key]
         public int Id { get; set; }
-        public string MalzemeBirimFiyat { get; set; }
+        public double MalzemeBirimFiyat { get; set; }
         public int IhaleId { get; set; }
     }
 }
