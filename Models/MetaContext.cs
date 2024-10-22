@@ -15,7 +15,7 @@ public partial class MetaContext : DbContext
     public virtual DbSet<CreateAddSetId> CreateAddSetId { get; set; }
     public virtual DbSet<MailCrmFinal> MailCrmFinal { get; set; }
     //public virtual DbSet<Ihale> Ihale { get; set; }
-    //public virtual DbSet<IhaleBirimFiyat> IhaleBirimFiyat { get; set; }
+    public virtual DbSet<IhaleBirimFiyat> IhaleBirimFiyat { get; set; }
 
 
 
@@ -95,7 +95,7 @@ public partial class MetaContext : DbContext
 
         });
 
-      
+
         //modelBuilder.Entity<Ihale>(entity =>
         //{
         //    entity.ToTable("ihale");
@@ -108,19 +108,19 @@ public partial class MetaContext : DbContext
         //    entity.Property(e => e.UniqueIndexId).HasColumnName("unique_index_id");
         //    entity.Property(e => e.GenelGiderKarYuzdesi).HasColumnName("genel_gider_kar_yuzdesi");
         //    entity.Property(e => e.Status).HasColumnName("status");
-          
+
 
         //});
 
-        //modelBuilder.Entity<IhaleBirimFiyat>(entity =>
-        //{
-        //    entity.ToTable("ihale_birim_fiyat");
+        modelBuilder.Entity<IhaleBirimFiyat>(entity =>
+        {
+            entity.ToTable("ihale_birim_fiyat");
 
-        //    entity.Property(e => e.Id).HasColumnName("id");
-        //    entity.Property(e => e.MalzemeBirimFiyat).HasColumnName("malzeme_birim_fiyat");
-        //    entity.Property(e => e.IhaleId).HasColumnName("ihale_id");
-           
-        //});
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.MalzemeBirimFiyat).HasColumnName("malzeme_birim_fiyat");
+            entity.Property(e => e.IhaleId).HasColumnName("ihale_id");
+
+        });
         OnModelCreatingPartial(modelBuilder);
     }
 
