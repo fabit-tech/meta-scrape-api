@@ -119,6 +119,7 @@ public partial class MetaContext : DbContext
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.MalzemeBirimFiyat).HasColumnName("malzeme_birim_fiyat");
             entity.Property(e => e.IhaleId).HasColumnName("ihale_id");
+            entity.Property(e => e.PozNo).HasColumnName("poz_no");
 
         });
         OnModelCreatingPartial(modelBuilder);
