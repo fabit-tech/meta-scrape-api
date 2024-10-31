@@ -113,6 +113,7 @@ app.MapPost("/api/marketing/set-disable", async (MetaContext db, HttpContext con
     });
     await db.SaveChangesAsync();
 });
+
 app.MapPost("/api/marketing/change-status", async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
 {
     idList = idList ?? new List<double>();
@@ -121,6 +122,18 @@ app.MapPost("/api/marketing/change-status", async (MetaContext db, HttpContext c
     list.ForEach((item) =>
     {
         item.Status = !item.Status;
+    });
+    await db.SaveChangesAsync();
+});
+
+app.MapPost("/api/ihale/set-disable", async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
+{
+    idList = idList ?? new List<double>();
+    var list = await db.Ihale.Where(a => idList.Contains(a.Id)).ToListAsync();
+
+    list.ForEach((item) =>
+    {
+        item.Status = true;
     });
     await db.SaveChangesAsync();
 });
