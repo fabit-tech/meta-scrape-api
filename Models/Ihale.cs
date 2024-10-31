@@ -13,6 +13,7 @@ namespace MetaApi.Models
         public int UniqueIndexId { get; set; }
         public double GenelGiderKarYuzdesi { get; set; }
         public bool Status { get; set; }
+        public string ParaBirimi { get; set; }
 
     }
 }
