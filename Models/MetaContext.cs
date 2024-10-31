@@ -108,7 +108,7 @@ public partial class MetaContext : DbContext
             entity.Property(e => e.UniqueIndexId).HasColumnName("unique_index_id");
             entity.Property(e => e.GenelGiderKarYuzdesi).HasColumnName("genel_gider_kar_yuzdesi");
             entity.Property(e => e.Status).HasColumnName("status");
-            entity.Property(e => e.Status).HasColumnName("para_birimi");
+            entity.Property(e => e.ParaBirimi).HasColumnName("para_birimi");
 
 
         });
