@@ -10,5 +10,8 @@ namespace MetaApi.Models
         public int IhaleId { get; set; }
         public string PozNo { get; set; }
 
+        public string ParaBirimi { get; set; }
+
+
     }
 }

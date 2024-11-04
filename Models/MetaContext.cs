@@ -108,7 +108,6 @@ public partial class MetaContext : DbContext
             entity.Property(e => e.UniqueIndexId).HasColumnName("unique_index_id");
             entity.Property(e => e.GenelGiderKarYuzdesi).HasColumnName("genel_gider_kar_yuzdesi");
             entity.Property(e => e.Status).HasColumnName("status");
-            entity.Property(e => e.ParaBirimi).HasColumnName("para_birimi");
 
 
         });
@@ -121,6 +120,8 @@ public partial class MetaContext : DbContext
             entity.Property(e => e.MalzemeBirimFiyat).HasColumnName("malzeme_birim_fiyat");
             entity.Property(e => e.IhaleId).HasColumnName("ihale_id");
             entity.Property(e => e.PozNo).HasColumnName("poz_no");
+            entity.Property(e => e.ParaBirimi).HasColumnName("para_birimi");
+
 
         });
         OnModelCreatingPartial(modelBuilder);
