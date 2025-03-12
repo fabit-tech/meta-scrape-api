@@ -83,7 +83,7 @@ public partial class MetaContext : DbContext
            // entity.Property(e => e.Dil).HasColumnName("dil");
            // entity.Property(e => e.Ulke).HasColumnName("ulke");
            // entity.Property(e => e.CreateDate).HasColumnName("create_date");
-           // entity.Property(e => e.IsSpam).HasColumnName("is_spam");
+            entity.Property(e => e.IsSpam).HasColumnName("is_spam");
           //  entity.Property(e => e.IsDomestic).HasColumnName("is_domestic");
            // entity.Property(e => e.Projects).HasColumnName("projects");
             entity.Property(e => e.EmailId).HasColumnName("email_id");
