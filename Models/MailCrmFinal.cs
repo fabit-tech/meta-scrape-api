@@ -26,7 +26,7 @@ public string? Mesaj { get; set; }
 
 //public DateTime? CreateDate { get; set; }
 
-//public double? IsSpam { get; set; }
+public double? IsSpam { get; set; }
 
 //public double? IsDomestic { get; set; }
 
