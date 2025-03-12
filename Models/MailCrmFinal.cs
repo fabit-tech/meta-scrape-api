@@ -44,6 +44,6 @@ public string? VmSource { get; set; }
 
 public bool Status { get; set; }
 
-public DateTime? RecordDate { get; set; }
+//public DateTime? RecordDate { get; set; }
 
 }
