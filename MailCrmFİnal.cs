@@ -138,6 +138,19 @@ app.MapPost("/api/ihale/set-disable", async (MetaContext db, HttpContext context
     await db.SaveChangesAsync();
 });
 
+app.MapPost("/api/mail/set-disable", async (MetaContext db, HttpContext context, [FromBody] List<double> idList) =>
+{
+    idList = idList ?? new List<double>();
+    var list = await db.MailCrmFinal.Where(a => idList.Contains(a.EmailId)).ToListAsync();
+
+    list.ForEach((item) =>
+    {
+        item.Status = true;
+    });
+    await db.SaveChangesAsync();
+});
+
+
 //createaddsetid enpoint
 app.MapGet("/api/category/addset/{status}", [Authorize] async (MetaContext db, int status) => await db.CreateAddSetId.Where(a => a.Status == (status == 0 ? false : true)).ToListAsync());
 
